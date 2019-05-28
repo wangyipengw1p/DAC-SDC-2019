@@ -5,3 +5,5 @@ Description and tools for DAC SDC 2019
 ## yolo@Darknet
 
 ## tridentNet@Simpledet
+
+## shuffleNet@Caffe
