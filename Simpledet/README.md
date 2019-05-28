@@ -45,6 +45,7 @@ e.g.  boat1_000001.jpg  boat1_000001.xml
 
 
 Since coco needs .json file while DAC provides xml format, so one should do the conversion using [`data_to_coco.py`](https://github.com/wangyipengw1p/DAC-SDC-2019/blob/master/Simpledet/data_to_coco.py), which require a input file recording the name of all imgs
+**remember to open `data_to_coco.py` to change the path first**
 ```
 <inputfile>
 
@@ -60,7 +61,7 @@ Copy [`get_file_name.sh`](https://github.com/wangyipengw1p/DAC-SDC-2019/tree/mas
 ```
 sh get_file_name.sh
 ```
-A `output.txt` will be generated, now move it to the same folder with [`data_to_coco.py`](https://github.com/wangyipengw1p/DAC-SDC-2019/tree/master/Simpledet/data_to_coco.py) and command (remember to change the path)
+A `output.txt` will be generated, now move it to the same folder with [`data_to_coco.py`](https://github.com/wangyipengw1p/DAC-SDC-2019/tree/master/Simpledet/data_to_coco.py) and command 
 ```
 python data_to_coco.py output.txt data/coco/annotations/instances_DAC-SDC.json
 ```
