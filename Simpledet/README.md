@@ -43,9 +43,16 @@ e.g.  boat1_000001.jpg  boat1_000001.xml
 ```
 > Note that the filename of the DAC-SDC dataset even including Chinese bracket, which could not be recognized by some `bash`. So you may need to deal with this problem first. The simplest method is to select only last four charactor of the original filename, using python.
 
+Then  open `data_to_coco.py` to change the path
+```
+<line 22>
+
+#### To do : change the path for image and annotations ###
+	img_path = ''	# e.g. data/coco/images/DAC-SDC/
+	ann_path = ''
+```
 
 Since coco needs .json file while DAC provides xml format, so one should do the conversion using [`data_to_coco.py`](https://github.com/wangyipengw1p/DAC-SDC-2019/blob/master/Simpledet/data_to_coco.py), which require a input file recording the name of all imgs
-**remember to open `data_to_coco.py` to change the path first**
 ```
 <inputfile>
 
