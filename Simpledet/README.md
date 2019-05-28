@@ -34,7 +34,7 @@ data/
         images/
             DAC-SDC
 ```
-The file name and path in DAC-SDC dataset is a disaster, so run `move_imgs_anno.sh` to gather all imgs and xml desired folder and rename them like this
+The file name and path in DAC-SDC dataset is a disaster, so run [`move_imgs_anno.sh`](https://github.com/wangyipengw1p/DAC-SDC-2019/tree/master/Simpledet/move_imgs_anno.sh) to gather all imgs and xml desired folder and rename them like this
 
 **compulsory to continue**
 ```
@@ -44,7 +44,7 @@ e.g.  boat1_000001.jpg  boat1_000001.xml
 > Note that the filename of the DAC-SDC dataset even including Chinese bracket, which could not be recognized by some `bash`. So you may need to deal with this problem first. The simplest method is to select only last four charactor of the original dataset file, using python.
 
 
-Since coco needs .json file while DAC provides xml format, so one should do the conversion using `data_to_coco.py`, which require a input file recording the name of all imgs
+Since coco needs .json file while DAC provides xml format, so one should do the conversion using [`data_to_coco.py`](https://github.com/wangyipengw1p/DAC-SDC-2019/blob/master/Simpledet/data_to_coco.py), which require a input file recording the name of all imgs
 ```
 <inputfile>
 
@@ -56,11 +56,11 @@ building1_000005
 building1_000006
 ...
 ```
-Copy `get_file_name.sh` to `data/coco/images/DAC-SDC` and run
+Copy [`get_file_name.sh`](https://github.com/wangyipengw1p/DAC-SDC-2019/tree/master/Simpledet/get_file_name.sh) to `data/coco/images/DAC-SDC` and run
 ```
 sh get_file_name.sh
 ```
-A `output.txt` will be generated, now move it to the same folder with `data_to_coco.py` and command (remember to change the path)
+A `output.txt` will be generated, now move it to the same folder with [`data_to_coco.py`](https://github.com/wangyipengw1p/DAC-SDC-2019/tree/master/Simpledet/data_to_coco.py) and command (remember to change the path)
 ```
 python data_to_coco.py output.txt data/coco/annotations/instances_DAC-SDC.json
 ```
