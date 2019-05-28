@@ -104,3 +104,11 @@ ANYTHING you desire :)
 ```
 python3 detection_train.py --config config/<config>.py
 ```
+Now traing is Launched!
+
+`nohup` will be useful if you're training on a server.
+
+`mxnet` will run process to find the best algorithm to do the convolution, change the environment to disable as instructed.
+
+
+
