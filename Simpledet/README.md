@@ -119,7 +119,7 @@ Now traing is Launched!
 
 `nohup` will be useful if you're training on a server.
 
-`mxnet` will run process to find the best algorithm to do the convolution, change the environment to disable as instructed.
+`mxnet` will run process to find the best algorithm to do the convolution, change the environment MXNET_CUDNN_AUTOTUNE_DEFAULT to 0 to disable.
 
 
 
