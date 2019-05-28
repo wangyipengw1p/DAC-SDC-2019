@@ -23,7 +23,7 @@ SimpleDet requires groundtruth annotation organized as following format, and pro
     ...
 ]
 ```
-For training DAC-SDC dataset, one can organize data in coco-like format, It's recommand to place data under \<simpledet-dir\>
+For training DAC-SDC dataset, one can organize data in coco-like format, It's recommand to place data under $SIMPLEDET_DIR
 ```
 data/
     coco/
@@ -61,6 +61,17 @@ A `output.txt` will be generated, now move it to the same folder with `data_to_c
 ```
 python data_to_coco.py output.txt data/coco/annotations/instances_DAC-SDC.json
 ```
+### Generate the roidb
+```
+cd $SIMPLEDET_DIR
+python3 utils/generate_roidb.py --dataset coco --dataset-split DAC-SDC
+```
+Then the roidb will be generated to `data/cache`
+### Deploy dependency and compile extension
+```
+cd $SIMPLEDET_DIR
+git clone https://github.com/RogerChern/mxnext
+```
 ### config the network
 Choose the network in [config](https://github.com/TuSimple/simpledet/tree/master/config), and modify. Typically you should change
 
@@ -88,4 +99,8 @@ class coco:
 **selective**
 ```
 ANYTHING you desire :)
+```
+### Train
+```
+python3 detection_train.py --config config/<config>.py
 ```
