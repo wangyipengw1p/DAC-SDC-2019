@@ -100,7 +100,8 @@ class DatasetParam:                 # change this origial image set to "coco_DAC
 ```
 ```
 from_scratch = False              
- # usually on DAC-SDC, we are traing from scratch, so set this to TRUE
+ # if you wang to traing from scratch, set this to TRUE. 
+ # It's recommanded to train based on pre-trained coco model
 ```
 ```
 # change the annotation path to "data/coco/annotations/instances_DAC-SDC.json"
