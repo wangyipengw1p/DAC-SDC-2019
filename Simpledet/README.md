@@ -1,7 +1,7 @@
 # Train your own data on [Simpledet](https://github.com/TuSimple/simpledet)
 ### Install
 SimpleDet contains a lot of C++ operators not in MXNet offical repo, so one has to build MXNet from scratch. Please refer to [INSTALL.md](https://github.com/TuSimple/simpledet/blob/master/doc/INSTALL.md) more details
-### Download the [DAC-SDC dataset](https://pitt.app.box.com/s/756141768nn92cj0dkfbg6dan17c4h4q0）
+### Download the [DAC-SDC dataset](https://pitt.app.box.com/s/756141768nn92cj0dkfbg6dan17c4h4q0)
 ### Organize data
 SimpleDet requires groundtruth annotation organized as following format, and provides tools for COCO-like dataset. 
 ```
