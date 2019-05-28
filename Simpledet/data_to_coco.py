@@ -5,7 +5,7 @@
     Attention: This is not the official format, it does not require licenses and other redundant info, but can generate
     coco-like dataset which can be accepted by Simpledet.
 
-    TODO: You should reimplement the code from line 31 to the end, this file only describe the format of dataset
+    TODO: You should reimplement the code line 22, this file only describe the format of dataset
     and the way to save it.
 """
 
