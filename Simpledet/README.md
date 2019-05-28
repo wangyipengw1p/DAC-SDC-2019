@@ -1,6 +1,7 @@
 # Train your own data on [Simpledet](https://github.com/TuSimple/simpledet)
 ### Install
 SimpleDet contains a lot of C++ operators not in MXNet offical repo, so one has to build MXNet from scratch. Please refer to [INSTALL.md](https://github.com/TuSimple/simpledet/blob/master/doc/INSTALL.md) more details
+### Download the [DAC-SDC dataset](https://pitt.app.box.com/s/756141768nn92cj0dkfbg6dan17c4h4q0）
 ### Organize data
 SimpleDet requires groundtruth annotation organized as following format, and provides tools for COCO-like dataset. 
 ```
@@ -33,13 +34,15 @@ data/
         images/
             DAC-SDC
 ```
-The file name and path in DAC-SDC dataset is a disaster, even including Chinese bracket. So run `move_imgs_anno.sh` to gather all imgs and xml desired folder and rename them like this
+The file name and path in DAC-SDC dataset is a disaster, so run `move_imgs_anno.sh` to gather all imgs and xml desired folder and rename them like this
 
 **compulsory to continue**
 ```
 <classname>_<filename>
 e.g.  boat1_000001.jpg  boat1_000001.xml
 ```
+> Note that the filename of the DAC-SDC dataset even including Chinese bracket, which could not be recognized by some `bash`. So you may need to deal with this problem first. The simplest method is to select only last four charactor of the original dataset file, using python.
+
 
 Since coco needs .json file while DAC provides xml format, so one should do the conversion using `data_to_coco.py`, which require a input file recording the name of all imgs
 ```
