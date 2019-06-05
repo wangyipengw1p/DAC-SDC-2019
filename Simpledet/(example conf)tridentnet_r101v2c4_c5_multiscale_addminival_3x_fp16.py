@@ -115,9 +115,9 @@ def get_config(is_train):
 
     class DatasetParam:
         if is_train:
-            image_set = ("coco_DAC-SDC")
+            image_set = ("coco_DAC-SDC",)
         else:
-            image_set = ("coco_test-dev2017" )
+            image_set = ("coco_DAC-SDC", )
             # image_set = ("coco_minival2014", )
 
     backbone = Backbone(BackboneParam)
@@ -141,7 +141,7 @@ def get_config(is_train):
         train_symbol = train_sym
         test_symbol = test_sym
 
-        from_scratch = False
+        from_scratch = True
         random = True
         memonger = True
         memonger_until = "stage3_unit21_plus"
