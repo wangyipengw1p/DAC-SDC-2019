@@ -1,5 +1,5 @@
 # DAC-SDC-2019
-Description and tools for DAC SDC 2019 with ict-Jeejio-nobug
+Description and tools for DAC SDC 2019 with ict-Jeejio-nobug. We won the 8th place in the GPU track.
 
 `Will upload soon`
 
