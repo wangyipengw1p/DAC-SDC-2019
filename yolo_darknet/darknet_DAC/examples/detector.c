@@ -1,5 +1,6 @@
 #include "darknet.h"
 
+
 static int coco_ids[] = {1,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,27,28,31,32,33,34,35,36,37,38,39,40,41,42,43,44,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,67,70,72,73,74,75,76,77,78,79,80,81,82,84,85,86,87,88,89,90};
 
 
@@ -570,19 +571,24 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
     set_batch_network(net, 1);
     srand(2222222);
     double time;
-    char buff[256];
-    char *input = buff;
+    char input[256] = "";
     float nms=.45;
-    while(1){
-        if(filename){
-            strncpy(input, filename, 256);
-        } else {
-            printf("Enter Image Path: ");
-            fflush(stdout);
-            input = fgets(input, 256, stdin);
-            if(!input) return;
-            strtok(input, "\n");
-        }
+	//-----------------------------------------------	
+	FILE *fp; 
+      if((fp = fopen(filename,"r")) == NULL) //判断文件是否存在及可读
+      { 
+          printf("read txt file error!"); 
+          exit(1);
+      } 
+   
+	
+	//-----------------------------------------------
+
+    while(!feof(fp)){
+		input[0] = '\0';
+		fscanf(fp, "%s", input);
+		
+        
         image im = load_image_color(input,0,0);
         image sized = letterbox_image(im, net->w, net->h);
         //image sized = resize_image(im, net->w, net->h);
@@ -596,6 +602,25 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         time=what_time_is_it_now();
         network_predict(net, X);
         printf("%s: Predicted in %f seconds.\n", input, what_time_is_it_now()-time);
+
+
+/*/--------------------------------------------------------------
+	FILE* ff = NULL;
+	double avg_time = 1000 * (what_time_is_it_now()-time);
+	double total_time = 0.;
+	if (( ff = fopen("tempt.txt","r")) == NULL) {
+	ff = fopen("tempt.txt","w");
+	fprintf(ff,"%lf",0.);
+	fclose(ff);
+	ff=fopen("tempt.txt","r");}
+	
+	fscanf(ff,"%lf",&total_time);
+	fclose(ff);
+	ff = fopen("tempt.txt","w");
+	fprintf(ff,"%lf",total_time + avg_time);
+	fclose(ff);
+	printf("\nTotal time so far: %lf",total_time + avg_time);
+//-------------------------------------------------------------*/
         int nboxes = 0;
         detection *dets = get_network_boxes(net, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
         //printf("%d\n", nboxes);
@@ -607,17 +632,21 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             save_image(im, outfile);
         }
         else{
-            save_image(im, "predictions");
-#ifdef OPENCV
-            make_window("predictions", 512, 512, 0);
-            show_image(im, "predictions", 0);
-#endif
+	    char temptchar[256] = "";
+	    strcat(temptchar, input);
+	    strcat(temptchar,"_prediction");
+            save_image(im, temptchar);
+//#ifdef OPENCV
+//            make_window("predictions", 512, 512, 0);
+//            show_image(im, "predictions", 0);
+//#endif
         }
 
         free_image(im);
         free_image(sized);
-        if (filename) break;
+        
     }
+fclose(fp);
 }
 
 /*
