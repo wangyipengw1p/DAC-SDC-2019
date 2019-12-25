@@ -72,3 +72,5 @@ $ ./darknet detector train DAC-SDC.data yolov2-DAC.cfg [yolo-final[0601].weights
 
 If you are getting errors with `.weights` indicated, consider add `-clear`, which will clear the statistics but will not touch original weights.
 
+## Want we have done to the network and how we trained?
+`To be updated`
